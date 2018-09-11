@@ -26,3 +26,11 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+/* nav > ul {
+  display: inline-block;
+}
+ul li{
+  display: inline-block;
+  text-align: right
+} */

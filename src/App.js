@@ -1,20 +1,20 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import SignUp from "./Screens/SignUp/SignUp";
+import LogIn from "./Screens/LogIn/LogIn";
 
 class App extends Component {
+  constructor(){
+    super()
+    this.state = {
+      // isUser: false
+    }
+  }
   render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
+    return <div>
+        <SignUp />
+        <LogIn /> {/*pass a function to get user is login or not by using prop*/}
+      </div>;
   }
 }
 
