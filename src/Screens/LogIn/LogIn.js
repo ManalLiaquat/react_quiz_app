@@ -12,18 +12,14 @@ class LogIn extends Component {
 
   logInNow() {
     const { email, password } = this.state;
-    // console.log(email, password);
-    
     let userInfo = JSON.parse(localStorage.getItem("userInfo"));
-    // console.log(userInfo);
-
     if (email === userInfo.email && password === userInfo.password) {
-      console.log("user logged in ****");
+      sessionStorage.setItem("userInfo", JSON.stringify(userInfo));
     } else {
       console.log("enter correct details");
     }
+    // console.log(JSON.parse(sessionStorage.getItem("userInfo")));
   }
-
   render() {
     return (
       <div>
@@ -35,11 +31,7 @@ class LogIn extends Component {
           type="password"
           onChange={e => this.setState({ password: e.target.value })}
         />
-        <button
-          onClick={this.logInNow}
-        >
-          LogIn
-        </button>
+        <button onClick={this.logInNow}>LogIn</button>
       </div>
     );
   }
