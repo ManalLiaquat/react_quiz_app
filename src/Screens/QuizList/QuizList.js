@@ -13,7 +13,53 @@ class QuizList extends Component {
         {
           quizName: "HTML",
           tests: [
-            { name: "Test 1", questions: 5, time: 60 },
+            {
+              name: "Test 1",
+              questions: 5,
+              time: 60,
+              quiz_questions: [
+                {
+                  quiz: "What is abbreviation of HTML?",
+                  option1: "Hyper Type Multi Language",
+                  option2: "Higher Text Multiple Language",
+                  option3: "Hyper Text Markup Language",
+                  option4: "Hollow Type Markup Language ",
+                  answer: "3"
+                },
+                {
+                  quiz: "How many types of markup in HTML?",
+                  option1: "Both",
+                  option2: "1 - opening and closing markup only",
+                  option3: "None of above",
+                  option4: "1 - self closing markups only",
+                  answer: "1"
+                },
+                {
+                  quiz: "<iframe> is HTML5 markup",
+                  option1: "False",
+                  option2: "True",
+                  option3: "Neither true nor false",
+                  option4: "Not Sure",
+                  answer: "2"
+                },
+                {
+                  quiz: "<div> and <span> are inline elements?",
+                  option1: "True",
+                  option2: "False",
+                  option3: "Neither True nor false",
+                  option4: "None of above",
+                  answer: "3"
+                },
+                {
+                  quiz: "HTML must need body markup. Why? Because:",
+                  option1: "It did'nt needs to show the markups inside it.",
+                  option2: "It needs to show the markups inside it.",
+                  option3: "It needs <head> element",
+                  option4: "None of above",
+                  answer: "2"
+                }
+              ]
+            },
             { name: "Test 2", questions: 10, time: 120 }
           ]
         },
@@ -58,13 +104,13 @@ class QuizList extends Component {
         <ol>
           {saveSelectedQuizObj.tests.map((test, i) => {
             return (
-              <li key={`${test.name}`}>
+              <li key={`${saveSelectedQuizObj.quizName}_${test.name}`}>
                 <h4>{test.name}</h4>
                 <p>Total Questions: {test.questions}</p>
                 <p>Total Time: {test.time} Seconds</p>
                 <button
                   onClick={() => {
-                    console.log(i); //start quiz banana hai
+                    // send a object to a function that will genrate questions
                   }}
                 >
                   Start Quiz {i + 1}
