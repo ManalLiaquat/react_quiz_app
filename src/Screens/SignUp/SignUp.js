@@ -37,7 +37,7 @@ class SignUp extends Component {
           onChange={e => {
             this.setState({ username: e.target.value });
           }}
-          autoFocus="true"
+          autoFocus={true}
           placeholder="name"
         />
         <input

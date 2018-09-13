@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import SignUp from "./Screens/SignUp/SignUp";
 import LogIn from "./Screens/LogIn/LogIn";
+import QuizList from "./Screens/QuizList/QuizList";
 
 class App extends Component {
   constructor() {
@@ -68,7 +69,8 @@ class App extends Component {
           <div>
             Body
             <button onClick={this.logout}>Logout</button>
-            
+            <hr />
+            <QuizList />
             <br />
             <br />
             <br />

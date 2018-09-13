@@ -32,7 +32,7 @@ class LogIn extends Component {
             })
           }
           autoComplete="true"
-          autoFocus="true"
+          autoFocus={true}
           placeholder="email"
         />
         <input
