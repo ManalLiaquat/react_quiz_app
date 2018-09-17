@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import MCQs from "../MCQs/MCQs";
+import coverPic1 from "../../images/quiz.jpg";
+import coverPic2 from "../../images/test.png";
 
 class QuizList extends Component {
   constructor() {
@@ -313,7 +315,7 @@ class QuizList extends Component {
             {
               name: "Test 2",
               questions: 6,
-              time: 70,
+              time: 120,
               quiz_questions: [
                 {
                   quiz:
@@ -453,37 +455,48 @@ class QuizList extends Component {
     return (
       <div>
         <h2>{saveSelectedQuizObj.quizName} Quiz</h2>
-        <ol>
+
+        <div className="row">
           {saveSelectedQuizObj.tests.map((test, i) => {
             return (
-              <li key={`${saveSelectedQuizObj.quizName}_${test.name}`}>
-                <h4>{test.name}</h4>
-                <p>Total Questions: {test.questions}</p>
-                <p>Total Time: {test.time} Seconds</p>
-                <button
-                  onClick={() => {
-                    // send a object to a function that will genrate questions
-                    /* this.getMCQ(
-                      i,
-                      saveSelectedQuizObj.quizName,
-                      test.time,
-                      test.quiz_questions
-                    ); */
-
-                    this.setState({
-                      renderMCQs: true,
-                      currentTestIndex: i,
-                      renderSelectedTestObj: false
-                    });
-                  }}
-                >
-                  Start Quiz {i + 1}
-                </button>
-              </li>
+              <div
+                className="col-md-4"
+                key={`${saveSelectedQuizObj.quizName}_${test.name}`}
+              >
+                <div className="card" style={{ width: "18rem" }}>
+                  <img
+                    className="card-img-top"
+                    src={coverPic2}
+                    alt="Card image cap"
+                  />
+                  <div className="card-body">
+                    <h5 className="card-title">{test.name}</h5>
+                    <p className="card-text">
+                      Total Questions: {test.questions}
+                    </p>
+                    <p>Total Time: {test.time / 60} Minutes</p>
+                    <button
+                      className="btn btn-success"
+                      onClick={() => {
+                        this.setState({
+                          renderMCQs: true,
+                          currentTestIndex: i,
+                          renderSelectedTestObj: false
+                        });
+                      }}
+                    >
+                      Start Quiz {i + 1} <i className=" fa fa-paper-plane" />
+                    </button>
+                  </div>
+                </div>
+              </div>
             );
           })}
-        </ol>
-        <button onClick={this.back}>Back</button>
+        </div>
+        <br />
+        <button className="btn btn-secondary" onClick={this.back}>
+          Back <i className="fa fa-backward" />
+        </button>
       </div>
     );
   }
@@ -493,21 +506,36 @@ class QuizList extends Component {
     return (
       <div>
         <h2>Dashboard</h2>
-        <ul>
+
+        <div className="row">
           {quiz_list.map((qList, index) => {
             return (
-              <li style={{ margin: "15px" }} key={`${qList}_${index}`}>
-                {qList.quizName} QUIZ | There are {qList.tests} tests
-                <button
-                  style={{ marginLeft: "15px" }}
-                  onClick={this.updateQuizInfoState.bind(this, index)}
-                >
-                  Next
-                </button>
-              </li>
+              <div className="col-md-4" key={`${qList}_${index}`}>
+                <div className="card" style={{ width: "18rem" }}>
+                  <img
+                    className="card-img-top"
+                    src={coverPic1}
+                    alt="Card image cap"
+                  />
+                  <div className="card-body">
+                    <h5 className="card-title">{qList.quizName} Quiz</h5>
+                    <p className="card-text">
+                      Test your skills of JavaScript by taking this small quiz.
+                      It has {qList.tests} tests.
+                    </p>
+                    <button
+                      className="btn btn-info"
+                      onClick={this.updateQuizInfoState.bind(this, index)}
+                    >
+                      Next <i class=" fa fa-paper-plane" />
+                    </button>
+                    {/* <button className="btn btn-primary" >Next <i class=" fa fa-paper-plane"></i></button> */}
+                  </div>
+                </div>
+              </div>
             );
           })}
-        </ul>
+        </div>
       </div>
     );
   }
@@ -532,9 +560,7 @@ class QuizList extends Component {
         ) : (
           this.renderQuizList()
         )}
-        {/* {renderMCQs ? <MCQs currentQuesObj={saveSelectedQuizObj} currentTestIndex={currentTestIndex} /> : <br/> } */}
         {console.log(currentTestIndex, saveSelectedQuizObj, renderMCQs)}
-        {/* {this.renderMCQ()} */}
       </div>
     );
   }

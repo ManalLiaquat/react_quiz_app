@@ -32,30 +32,52 @@ class SignUp extends Component {
     // const {  } = this.props;
     return (
       <div>
-        <input
-          type="text"
-          onChange={e => {
-            this.setState({ username: e.target.value });
-          }}
-          autoFocus={true}
-          placeholder="name"
-        />
-        <input
-          type="email"
-          onChange={e => {
-            this.setState({ email: e.target.value });
-          }}
-          placeholder="email"
-        />
-        <input
-          type="password"
-          onChange={e => {
-            this.setState({ password: e.target.value });
-          }}
-          maxLength="8"
-          placeholder="password"
-        />
-        <button onClick={this.signUpNow}>Submit</button>
+        <h1 className="text-center ">REGISTRATION</h1>
+        <br />
+        <div className="row">
+          <div className="col-md-4">
+            <label htmlFor="name">Username:</label>
+            <input
+              type="text"
+              onChange={e => {
+                this.setState({ username: e.target.value });
+              }}
+              autoFocus={true}
+              className="form-control"
+              placeholder="name"
+            />
+          </div>
+          <div className="col-md-4">
+            <label htmlFor="number">Email:</label>
+            <input
+              type="email"
+              onChange={e => {
+                this.setState({ email: e.target.value });
+              }}
+              className="form-control"
+              placeholder="email"
+            />
+          </div>
+          <div className="col-md-4">
+            <label htmlFor="number">password:</label>
+            <input
+              type="password"
+              onChange={e => {
+                this.setState({ password: e.target.value });
+              }}
+              maxLength="8"
+              className="form-control"
+              placeholder="password"
+            />
+          </div>
+          <div className="row">
+            <div className="col">
+              <button className="btn btn-primary" onClick={this.signUpNow}>
+                Submit <i className="fa fa-database" />
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

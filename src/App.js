@@ -48,28 +48,35 @@ class App extends Component {
   render() {
     const { isUser, authForms } = this.state;
     return (
-      <div>
+      <div className="container margin">
         {!isUser ? (
           authForms ? (
             <div>
               <SignUp toggleToSignIn={this.toggleAuthForms} />
-              <button onClick={this.toggleAuthForms.bind(this, false)}>
-                LogIn
+              <br/>
+              <button
+                className="btn btn-success"
+                onClick={this.toggleAuthForms.bind(this, false)}
+              >
+                LogIn <i className="fa fa-sign-in" />
               </button>
             </div>
           ) : (
             <div>
               <LogIn changeUserState={this.changeUserState} />
-              <button onClick={this.toggleAuthForms.bind(this, true)}>
-                SignUp
+              <br/>
+              <button
+                className="btn btn-primary"
+                onClick={this.toggleAuthForms.bind(this, true)}
+              >
+                SignUp <i className="fa fa-database" />
               </button>
             </div>
           )
         ) : (
           <div>
-            Body
-            <button onClick={this.logout}>Logout</button>
-            <hr />
+            <br />
+            <button className="btn btn-danger pull-right" onClick={this.logout}>Logout <i className="fa fa-sign-out"></i></button>
             <QuizList />
           </div>
         )}

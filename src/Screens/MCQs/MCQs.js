@@ -112,7 +112,7 @@ class MCQs extends Component {
           document.getElementById("resultContainer").style.display = "block";
         }
       }
-    }, 10);
+    }, 1000);
   }
 
   render() {
@@ -120,43 +120,110 @@ class MCQs extends Component {
     const { currentQuesObj, currentTestIndex } = this.props;
     return (
       <div>
-        <div id="quizContainer">
-          <p>
-            {min} : {sec}
-          </p>
-          <h3>{question}</h3>
-          <input type="radio" value="1" name="option" />
-          {opt1}
-          <br />
-          <input type="radio" value="2" name="option" />
-          {opt2} <br />
-          <input type="radio" value="3" name="option" />
-          {opt3} <br />
-          <input type="radio" value="4" name="option" />
-          {opt4} <br />
-          <button onClick={this.next.bind(this)}>click</button>
-        </div>
+        <div className="col-md-12">
+          <div className="col" id="content">
+            <div id="quizContainer">
+              <div className="modal-header">
+                <h5>
+                  <i className="fa fa-question-circle" />
+                  <span> </span>
+                  <span className="label label-warning">{question}</span>
+                </h5>
+                <h5>
+                  {min} : {sec}
+                </h5>
+              </div>
+              <div className="modal-body">
+                <div className="quiz" id="quiz" data-toggle="buttons">
+                  <label className="btn btn-lg btn-info btn-block">
+                    <span className="btn-label">
+                      <input type="radio" name="option" value="1" />
+                      <br />
+                      <i className="fa fa-arrow-right" />
+                    </span>
+                    <span>{opt1}</span>
+                  </label>
+                  <label className="btn btn-lg btn-info btn-block">
+                    <span className="btn-label">
+                      <input type="radio" name="option" value="2" />
+                      <br />
+                      <i className="fa fa-arrow-right" />
+                    </span>
+                    <span>{opt2}</span>
+                  </label>
+                  <label className="btn btn-lg btn-info btn-block">
+                    <span className="btn-label">
+                      <input type="radio" name="option" value="3" />
+                      <br />
+                      <i className="fa fa-arrow-right" />
+                    </span>
+                    <span>{opt3}</span>
+                  </label>
+                  <label className="btn btn-lg btn-info btn-block">
+                    <span className="btn-label">
+                      <input type="radio" name="option" value="4" />
+                      <br />
+                      <i className="fa fa-arrow-right" />
+                    </span>
+                    <span>{opt4}</span>
+                  </label>
+                  <button
+                    className="btn btn-success pull-right"
+                    onClick={this.next.bind(this)}
+                  >
+                    Next Question <i className="fa fa-angle-double-right" />
+                  </button>
 
-        <div id="resultContainer" style={{ display: "none" }}>
-          <h2>{currentQuesObj.quizName} Quiz</h2>
-          <h3>{currentQuesObj.tests[currentTestIndex].name}</h3>
-          <p>
-            Time:
-            {currentQuesObj.tests[currentTestIndex].time} seconds
-          </p>
-          {score < 70 ? (
-            <p>You are fail with grades {score}%</p>
-          ) : (
-            <p>You are pass with grades {score}%</p>
-          )}
-
-          <button
-            onClick={() => {
-              this.props.backToDashboard(false);
-            }}
-          >
-            Goto Dashboard
-          </button>
+                  <br />
+                  <br />
+                </div>
+              </div>
+            </div>
+            <div id="resultContainer" style={{ display: "none" }}>
+              <div className="modal-header">
+                <h2>{currentQuesObj.quizName} Quiz</h2>
+                <h3>{currentQuesObj.tests[currentTestIndex].name}</h3>
+                <p>
+                  Time:
+                  {currentQuesObj.tests[currentTestIndex].time} seconds
+                </p>
+                {score < 70 ? (
+                  <h3>You are fail with grades {score}%</h3>
+                ) : (
+                  <h3>You are pass with grades {score}%</h3>
+                )}
+                <button
+                  className="btn btn-secondary"
+                  onClick={() => {
+                    this.props.backToDashboard(false);
+                  }}
+                >
+                  Goto Dashboard <i className="fa fa-undo" />
+                </button>
+                <br/><br/>
+                {/* <p className="badge badge-warning text-center">My IDs</p>
+                <br />
+                <a
+                  href="https://github.com/ManalLiaquat/"
+                  className="badge badge-secondary text-center"
+                  target="_blank"
+                >
+                  <h3>
+                    <i className="fa fa-github" />
+                  </h3>
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/manal-liaquat-621684156/"
+                  className="badge badge-info text-center"
+                  target="_blank"
+                >
+                  <h3>
+                    <i className="fa fa-linkedin" />
+                  </h3>
+                </a> */}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );
