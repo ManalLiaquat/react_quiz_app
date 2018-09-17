@@ -17,6 +17,16 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <style>
+
+    #body {
+      background-image: url(../%PUBLIC_URL%/../src/images/background.jpg);
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+  </style>
   <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -29,7 +39,7 @@
   <title>React App</title>
 </head>
 
-<body>
+<body id="body">
   <noscript>
     You need to enable JavaScript to run this app.
   </noscript>

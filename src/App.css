@@ -70,3 +70,12 @@ label .btn-label {
 .modal-header i {
   color: orange;
 }
+
+/* .btn{
+  margin-top: 10px;
+} */
+
+.margin{
+  margin-top: 50px;
+  padding: 20px;
+}

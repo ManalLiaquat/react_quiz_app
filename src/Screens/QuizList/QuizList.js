@@ -520,14 +520,14 @@ class QuizList extends Component {
                   <div className="card-body">
                     <h5 className="card-title">{qList.quizName} Quiz</h5>
                     <p className="card-text">
-                      Test your skills of JavaScript by taking this small quiz.
+                      Test your skills of {qList.quizName} by taking this small quiz.
                       It has {qList.tests} tests.
                     </p>
                     <button
                       className="btn btn-info"
                       onClick={this.updateQuizInfoState.bind(this, index)}
                     >
-                      Next <i class=" fa fa-paper-plane" />
+                      Next <i className=" fa fa-paper-plane" />
                     </button>
                     {/* <button className="btn btn-primary" >Next <i class=" fa fa-paper-plane"></i></button> */}
                   </div>

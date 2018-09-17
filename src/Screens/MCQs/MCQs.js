@@ -55,7 +55,7 @@ class MCQs extends Component {
         console.log(quiz_questions.length);
         this.setState({ score });
       } else {
-        document.querySelector("input[name='option']:checked").checked = false;
+        // document.querySelector("input[name='option']:checked").checked = false;
         i++;
         const question = quiz_questions[i].quiz;
         const option1 = quiz_questions[i].option1;
@@ -86,7 +86,7 @@ class MCQs extends Component {
         sec: this.second
       });
       this.second--;
-      if (this.second == 0) {
+      if (this.second === 0) {
         this.second = 60;
         this.minute--;
         this.setState({
@@ -181,46 +181,49 @@ class MCQs extends Component {
             </div>
             <div id="resultContainer" style={{ display: "none" }}>
               <div className="modal-header">
-                <h2>{currentQuesObj.quizName} Quiz</h2>
-                <h3>{currentQuesObj.tests[currentTestIndex].name}</h3>
-                <p>
-                  Time:
-                  {currentQuesObj.tests[currentTestIndex].time} seconds
-                </p>
-                {score < 70 ? (
-                  <h3>You are fail with grades {score}%</h3>
-                ) : (
-                  <h3>You are pass with grades {score}%</h3>
-                )}
-                <button
-                  className="btn btn-secondary"
-                  onClick={() => {
-                    this.props.backToDashboard(false);
-                  }}
-                >
-                  Goto Dashboard <i className="fa fa-undo" />
-                </button>
-                <br/><br/>
-                {/* <p className="badge badge-warning text-center">My IDs</p>
-                <br />
-                <a
-                  href="https://github.com/ManalLiaquat/"
-                  className="badge badge-secondary text-center"
-                  target="_blank"
-                >
-                  <h3>
-                    <i className="fa fa-github" />
-                  </h3>
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/manal-liaquat-621684156/"
-                  className="badge badge-info text-center"
-                  target="_blank"
-                >
-                  <h3>
-                    <i className="fa fa-linkedin" />
-                  </h3>
-                </a> */}
+              <h2>{currentQuesObj.quizName} Quiz</h2>
+                  <button
+                    className="btn btn-secondary pull-right"
+                    onClick={() => {
+                      this.props.backToDashboard(false);
+                    }}
+                  >
+                    Goto Dashboard <i className="fa fa-undo" />
+                  </button>
+                </div>
+                <div className="modal-body">
+                  <h3>{currentQuesObj.tests[currentTestIndex].name}</h3>
+                  <p>
+                    Time:
+                    {currentQuesObj.tests[currentTestIndex].time / 60} Minute(s)
+                  </p>
+                  <p>Questions: {currentQuesObj.tests[currentTestIndex].questions}</p>
+                  {score < 70 ? (
+                    <h3>You are fail with grades {score}%</h3>
+                  ) : (
+                    <h3>You are pass with grades {score}%</h3>
+                  )}
+                  <hr />
+                  <p className="badge badge-warning text-center">My IDs</p>
+                  <br />
+                  <a
+                    href="https://github.com/ManalLiaquat/"
+                    className="badge badge-secondary text-center"
+                    target="_blank"
+                  >
+                    <h3>
+                      <i className="fa fa-github" />
+                    </h3>
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/manal-liaquat-621684156/"
+                    className="badge badge-info text-center"
+                    target="_blank"
+                  >
+                    <h3>
+                      <i className="fa fa-linkedin" />
+                    </h3>
+                  </a>
               </div>
             </div>
           </div>
