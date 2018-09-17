@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import MCQs from "../MCQs/MCQs";
 
 class QuizList extends Component {
   constructor() {
@@ -30,8 +31,8 @@ class QuizList extends Component {
                   quiz: "How many types of markup in HTML?",
                   option1: "Both",
                   option2: "1 - opening and closing markup only",
-                  option3: "None of above",
-                  option4: "1 - self closing markups only",
+                  option3: "1 - self closing markups only",
+                  option4: "None of above",
                   answer: "1"
                 },
                 {
@@ -421,32 +422,31 @@ class QuizList extends Component {
         }
       ],
       saveSelectedQuizObj: null,
-      renderSelectedQuizObj: false
+      renderSelectedTestObj: false,
+      renderMCQs: false,
+      currentTestIndex: null
     };
     this.back = this.back.bind(this);
-    this.renderQuiz = this.renderQuiz.bind(this);
+    this.backToDashboard = this.backToDashboard.bind(this);
   }
 
+  // saving selected quiz to state
   updateQuizInfoState(index) {
     const { quiz_info } = this.state;
     this.setState({
       saveSelectedQuizObj: quiz_info[index],
-      renderSelectedQuizObj: true
+      renderSelectedTestObj: true
     });
   }
 
+  // back button function
   back() {
-    this.setState({ renderSelectedQuizObj: false });
+    this.setState({ renderSelectedTestObj: false });
   }
 
-  renderQuiz(index, testName, time, questions) {
-    console.log(index + 1);
-    console.log(testName);
-    console.log(time);
-    console.log(questions);
+  backToDashboard(param) {
+    this.setState({ renderMCQs: param });
   }
-
-  /* Body Functions */
 
   renderQuizInfo() {
     const { saveSelectedQuizObj } = this.state;
@@ -463,12 +463,18 @@ class QuizList extends Component {
                 <button
                   onClick={() => {
                     // send a object to a function that will genrate questions
-                    this.renderQuiz(
+                    /* this.getMCQ(
                       i,
                       saveSelectedQuizObj.quizName,
                       test.time,
                       test.quiz_questions
-                    );
+                    ); */
+
+                    this.setState({
+                      renderMCQs: true,
+                      currentTestIndex: i,
+                      renderSelectedTestObj: false
+                    });
                   }}
                 >
                   Start Quiz {i + 1}
@@ -507,10 +513,28 @@ class QuizList extends Component {
   }
 
   render() {
-    const { renderSelectedQuizObj } = this.state;
+    const {
+      renderSelectedTestObj,
+      renderMCQs,
+      saveSelectedQuizObj,
+      currentTestIndex
+    } = this.state;
     return (
       <div>
-        {renderSelectedQuizObj ? this.renderQuizInfo() : this.renderQuizList()}
+        {renderSelectedTestObj ? (
+          this.renderQuizInfo()
+        ) : renderMCQs ? (
+          <MCQs
+            currentQuesObj={saveSelectedQuizObj}
+            currentTestIndex={currentTestIndex}
+            backToDashboard={this.backToDashboard}
+          />
+        ) : (
+          this.renderQuizList()
+        )}
+        {/* {renderMCQs ? <MCQs currentQuesObj={saveSelectedQuizObj} currentTestIndex={currentTestIndex} /> : <br/> } */}
+        {console.log(currentTestIndex, saveSelectedQuizObj, renderMCQs)}
+        {/* {this.renderMCQ()} */}
       </div>
     );
   }

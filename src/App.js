@@ -41,7 +41,7 @@ class App extends Component {
     sessionStorage.removeItem("userInfo");
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.checkUser();
   }
 
@@ -71,51 +71,6 @@ class App extends Component {
             <button onClick={this.logout}>Logout</button>
             <hr />
             <QuizList />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <hr />
-            <ul>
-              <li>quiz list</li>
-              <li>number of quizzes in the selected quiz</li>
-              <li>start quiz button on each quiz </li>
-            </ul>
-            <p>example</p>
-            <ol>
-              <li>
-                <button>HTML</button>
-                <button>CSS</button>
-                <button>JS</button>
-              </li>
-              <li>
-                <p>Info of (selected quiz) HTML</p>
-                <p>
-                  quiz 1 <button>start quiz 1</button>
-                </p>
-                <p>
-                  quiz 2 <button>start quiz 2</button>
-                </p>
-              </li>
-              <li>all questions one by one</li>
-            </ol>
-            {console.log(isUser)}
           </div>
         )}
       </div>
